@@ -1,41 +1,32 @@
-/*计算机求倒数，求余*/
-#include<stdio.h>
-#include<math.h>/*包含两个头文件（其中一个为数学函数头文件）*/
-int main()/*定义主函数*/
+//名字：鲁静雯 日期：2021年3月28号 
+#include<stdio.h>//头文件
+#include<stdlib.h>//stdlib 头文件即standard library标准库头文件。（system("pause")要用）
+int main(void)//无参数类型主函数
 {
-	int a, b, c, f, x, n;/*定义整形变量*/
-	double d;/*定义双精度变量*/
-	int i, j;
-	int y = 1;
-	scanf_s("%d", &i);/*通过让用户输入不同数字来进行不同种类的运算*/
-	switch (i)
+	int a[99][99]; int i, j, n;//a[][]是二维数组，定义i，j，n为整型变量
+	printf("请输入你是几阶矩阵\n");//在屏幕上输出请输入你是几个几阶矩阵，\n表示空格
+	scanf_s("%d", &n);//在键盘上输入一个数，输入的数用n代表
+	printf("请分别输入你的矩阵的元素\n");//在屏幕上输出请分别输入你的矩阵元素
+	for (i = 0; i < n; i++)//for循环表示当i=0且i<n时进行一次循环循环完以后i在自身的值上加一
 	{
-	case 1:/*加法运算*/
-		printf("Please input two numbers:");
-		scanf_s("%d,%d", &a, &b);/*读入用户输入的两个数字*/
-		c = a + b;
-		printf("%d+%d=%d", a, b, c);/*输出结果*/
-		break;/*结束*/
-	case 2:/*倒数运算*/
-		printf("Please input one number:");
-		scanf_s("%d", &a);
-		d = 1 / a;
-		printf("%d的倒数为：%d", a, d);
-		break;
-	case 3:
-		printf("Please input one number:");
-		scanf_s("%d", &a);
-		d = sqrt(a);/*调用求平方根函数sqrt*/
-		printf("%d的平方根为%d", a, d);
-	case 4:/*取余运算*/
-		scanf_s("%d,%d", &a, &b);
-		x = a, n = b;
-		printf("Please input two numbers:x=%d,n=%d", a, b);
-		for (j = 1; j <= n; j++)
+		for (j = 0; j < n; j++)//将利用两层for循环将二阶矩阵的元素读入表示当j等于1且j<n时进行循环，循环结束后，j在自身的值上加一
 		{
-			y = x * y;
+			scanf_s("%d", &a[i][j]);//在键盘上输一个数，输入的这个数的位置是在a[i][j]
 		}
-		printf("y=%d", y);
-		break;
+	}//第一个for循环代表行，第二个for循环代表列
+	int max = a[0][0];//定义nax等于a[0][0]
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			if (a[i][j] > max)
+			{
+				max = a[i][j];//如果矩阵有有元素比max大，那么矩阵的max就定义为新的那个更大的元素
+			}
+		}
 	}
+	//得到矩阵中最大的数就是max了
+	printf("最大的数为%d", max);//输出矩阵中最大的数max
+	system("pause");////将黑色窗口停留，用户按任意键后才会退出
+	return 0;//程序正常运行要返回一个0
 }
